@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Carl's Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="navbar">
+    <div class="brand">Carl's Portfolio</div>
+    <nav>
+      <ul>
+        <li><a href="#" data-section="home" class="nav-link active">Home</a></li>
+        <li><a href="#" data-section="about" class="nav-link">About Me</a></li>
+        <li><a href="#" data-section="services" class="nav-link">Services</a></li>
+        <li><a href="#" data-section="gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#" data-section="contact" class="nav-link">Contact Me</a></li>
+      </ul>
+    </nav>
+    <button class="mobile-toggle" aria-label="toggle menu">☰</button>
+  </header>
+
+  <!-- SECTIONS (single page) -->
+  <main>
+
+    <!-- HOME -->
+    <section id="home" class="section active">
+      <div class="home-inner">
+        <img src="images/pogi.jpg" alt="Carl Profile" class="profile-pic">
+        <h1>Hi, I'm <span class="accent">Carl</span></h1>
+        <p class="lead">A passionate Web Developer building modern, responsive, and user-friendly websites.</p>
+        <div class="cta">
+          <button class="btn primary" id="hireBtn">Hire Me</button>
+          <button class="btn outline" id="contactBtn">Contact Me</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Me</h2>
+        <p class="sub">Quick facts about me</p>
+        <ul class="about-list">
+          <li><strong>Experience:</strong> 2 Years</li>
+          <li><strong>Availability:</strong> Full-time</li>
+          <li><strong>Age:</strong> 22</li>
+          <li><strong>Degree:</strong> BS in computerscience</li>
+          <li><strong>Country:</strong> Philippines</li>
+          <li><strong>Hobby:</strong> Coding & Gaming</li>
+          <li><strong>Phone:</strong> +63 912 345 6789</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="container">
+        <h2>Services</h2>
+        <p class="sub">What I offer — click a card to learn more</p>
+        <div class="services-grid">
+          <div class="card service-card" data-modal="modal-webDesign">Web Design</div>
+          <div class="card service-card" data-modal="modal-webDev">Web Development</div>
+          <div class="card service-card" data-modal="modal-videoEdit">Video Editing</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section">
+      <div class="container">
+        <h2>Gallery</h2>
+        <p class="sub">Selected works / screenshots</p>
+        <div class="gallery-grid">
+          <img src="gallery1.jpg" alt="Gallery 1" class="gallery-item">
+          <img src="gallery2.jpg" alt="Gallery 2" class="gallery-item">
+          <img src="gallery3.jpg" alt="Gallery 3" class="gallery-item">
+          <img src="gallery4.jpg" alt="Gallery 4" class="gallery-item">
+          <img src="gallery5.jpg" alt="Gallery 5" class="gallery-item">
+          <img src="gallery6.jpg" alt="Gallery 6" class="gallery-item">
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact Me</h2>
+        <p class="sub">Reach out — I'm happy to talk about your project</p>
+
+        <div class="contact-cards">
+          <div class="contact-card"><strong>Mobile</strong><p>+63 950 480 8605</p></div>
+          <div class="contact-card"><strong>Email</strong><p><a href="mailto:deguzmancarlandrew.com">deguzmancarlandrew@gmail.com</a></p></div>
+          <div class="contact-card"><strong>Facebook</strong><p><a href="https://www.facebook.com/itsyahboycarl" target="_blank">Carl Andrew De Guzman</a></p></div>
+        </div>
+
+        <form id="contactForm" class="contact-form">
+          <input name="name" type="text" placeholder="Your name" required>
+          <input name="email" type="email" placeholder="Your email" required>
+          <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+          <button type="submit" class="btn primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Carl Andrew De Guzman</p>
+  </footer>
+
+  <!-- MODALS for services -->
+  <div id="modal-webDesign" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <button class="modal-close" data-close="modal-webDesign">&times;</button>
+      <h3>Web Design</h3>
+      <p>I design modern, brand-focused website UIs with clear information hierarchy, mobile-first layouts, and visual polish.</p>
+      <ul>
+        <li>UI mockups (Figma/Adobe XD)</li>
+        <li>Responsive design</li>
+        <li>Brand/color/typography guidance</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-webDev" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <button class="modal-close" data-close="modal-webDev">&times;</button>
+      <h3>Web Development</h3>
+      <p>I build fast, accessible, and maintainable websites using HTML, CSS, JavaScript and frameworks when needed.</p>
+      <ul>
+        <li>Responsive front-end</li>
+        <li>Performance & SEO basics</li>
+        <li>CMS or custom builds</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="modal-videoEdit" class="modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <button class="modal-close" data-close="modal-videoEdit">&times;</button>
+      <h3>Video Editing</h3>
+      <p>Short-form and long-form video editing for social, promos, tutorials — color correction, cuts, and motion graphics.</p>
+      <ul>
+        <li>Social edits (IG/FB/TikTok)</li>
+        <li>Promo and tutorial editing</li>
+        <li>Basic motion graphics & audio cleanup</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
