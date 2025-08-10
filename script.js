@@ -92,10 +92,32 @@ window.addEventListener('click', (e) => {
   });
 });
 
-// prevent actual form submit for demo
-document.getElementById('contactForm')?.addEventListener('submit', function(e){
-  e.preventDefault();
-  alert('Thanks! (form submission is disabled in this demo)'); // replace with real submit later
+// ====== Real Formspree contact form submission handler ======
+const form = document.getElementById('contactForm');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault(); // prevent page reload
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      alert("Thanks for your message! I'll get back to you soon.");
+      form.reset();
+    } else {
+      alert("Oops! There was a problem submitting your form.");
+    }
+  } catch (error) {
+    alert("Oops! There was a problem submitting your form.");
+  }
 });
 
 // initialize default visible section
