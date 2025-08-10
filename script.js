@@ -7,8 +7,10 @@ function showSectionById(id){
   sections.forEach(s => {
     if(s.id === id){
       s.classList.add('active');
-      // scroll into view smoothly (keeps consistent look)
-      s.scrollIntoView({behavior:'smooth', block:'start'});
+      // scroll manually with offset for fixed navbar (64px height)
+      const yOffset = -64;
+      const y = s.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     } else {
       s.classList.remove('active');
     }
