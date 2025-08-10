@@ -46,9 +46,18 @@ document.getElementById('contactBtn')?.addEventListener('click', () => {
 const mobileToggle = document.querySelector('.mobile-toggle');
 const navbar = document.querySelector('.navbar nav');
 mobileToggle?.addEventListener('click', () => {
-  if(navbar) navbar.style.display = navbar.style.display === 'flex' ? 'none' : 'flex';
+  if(navbar) {
+    const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+    mobileToggle.setAttribute('aria-expanded', String(!isExpanded));
+    navbar.style.display = navbar.style.display === 'flex' ? 'none' : 'flex';
+  }
 });
-function closeMobileNav(){ if(window.innerWidth <= 800 && navbar) navbar.style.display = 'none' }
+function closeMobileNav(){ 
+  if(window.innerWidth <= 800 && navbar) {
+    navbar.style.display = 'none';
+    if(mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+  }
+}
 
 // ====== Modal logic for Services ======
 function openModalById(id){
@@ -56,6 +65,8 @@ function openModalById(id){
   if(modal){
     modal.classList.add('show');
     modal.setAttribute('aria-hidden','false');
+    // Focus modal for accessibility
+    modal.querySelector('.modal-dialog')?.focus();
   }
 }
 function closeModalById(id){
