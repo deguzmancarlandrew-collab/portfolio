@@ -2,21 +2,26 @@
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
 
-// helper: show one section
-function showSectionById(id){
+function showSectionById(id) {
+  const navbar = document.querySelector('.navbar');
+  const navbarHeight = navbar ? navbar.offsetHeight : 64;
+
   sections.forEach(s => {
-    if(s.id === id){
+    if (s.id === id) {
       s.classList.add('active');
-      // scroll manually with offset for fixed navbar (64px height)
-      const yOffset = -64;
-      const y = s.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      let y = s.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+      // prevent overscroll beyond document height
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      if (y > maxScroll) y = maxScroll;
+
       window.scrollTo({ top: y, behavior: 'smooth' });
     } else {
       s.classList.remove('active');
     }
   });
 
-  // update active nav link
   navLinks.forEach(a => {
     a.classList.toggle('active', a.getAttribute('data-section') === id);
   });
@@ -28,17 +33,15 @@ navLinks.forEach(a => {
     e.preventDefault();
     const id = a.getAttribute('data-section');
     showSectionById(id);
-    // close mobile nav if used (optional)
     closeMobileNav();
   });
 });
 
 // Hook Home CTA buttons
 document.getElementById('hireBtn')?.addEventListener('click', () => {
-  // example: open contact form area and focus
   showSectionById('contact');
   const emailInput = document.querySelector('#contact input[type="email"]');
-  if(emailInput) emailInput.focus();
+  if (emailInput) emailInput.focus();
 });
 document.getElementById('contactBtn')?.addEventListener('click', () => {
   showSectionById('contact');
@@ -46,36 +49,39 @@ document.getElementById('contactBtn')?.addEventListener('click', () => {
 
 // mobile toggle (simple)
 const mobileToggle = document.querySelector('.mobile-toggle');
-const navbar = document.querySelector('.navbar nav');
+const navbarNav = document.querySelector('.navbar nav');
 mobileToggle?.addEventListener('click', () => {
-  if(navbar) {
-    const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-    mobileToggle.setAttribute('aria-expanded', String(!isExpanded));
-    navbar.style.display = navbar.style.display === 'flex' ? 'none' : 'flex';
+  if (navbarNav) {
+    const isVisible = navbarNav.style.display === 'flex';
+    navbarNav.style.display = isVisible ? 'none' : 'flex';
+
+    // update aria-expanded for accessibility
+    mobileToggle.setAttribute('aria-expanded', String(!isVisible));
   }
 });
-function closeMobileNav(){ 
-  if(window.innerWidth <= 800 && navbar) {
-    navbar.style.display = 'none';
-    if(mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+
+function closeMobileNav() {
+  if (window.innerWidth <= 800 && navbarNav) {
+    navbarNav.style.display = 'none';
+    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
   }
 }
 
 // ====== Modal logic for Services ======
-function openModalById(id){
+function openModalById(id) {
   const modal = document.getElementById(id);
-  if(modal){
+  if (modal) {
     modal.classList.add('show');
-    modal.setAttribute('aria-hidden','false');
-    // Focus modal for accessibility
+    modal.setAttribute('aria-hidden', 'false');
     modal.querySelector('.modal-dialog')?.focus();
   }
 }
-function closeModalById(id){
+
+function closeModalById(id) {
   const modal = document.getElementById(id);
-  if(modal){
+  if (modal) {
     modal.classList.remove('show');
-    modal.setAttribute('aria-hidden','true');
+    modal.setAttribute('aria-hidden', 'true');
   }
 }
 
@@ -83,7 +89,7 @@ function closeModalById(id){
 document.querySelectorAll('.service-card').forEach(card => {
   card.addEventListener('click', () => {
     const modalId = card.getAttribute('data-modal');
-    if(modalId) openModalById(modalId);
+    if (modalId) openModalById(modalId);
   });
 });
 
@@ -91,16 +97,16 @@ document.querySelectorAll('.service-card').forEach(card => {
 document.querySelectorAll('.modal-close').forEach(btn => {
   btn.addEventListener('click', () => {
     const id = btn.getAttribute('data-close');
-    if(id) closeModalById(id);
+    if (id) closeModalById(id);
   });
 });
 
 // click outside to close modal
 window.addEventListener('click', (e) => {
   document.querySelectorAll('.modal.show').forEach(modal => {
-    if(e.target === modal) {
+    if (e.target === modal) {
       modal.classList.remove('show');
-      modal.setAttribute('aria-hidden','true');
+      modal.setAttribute('aria-hidden', 'true');
     }
   });
 });
@@ -108,8 +114,8 @@ window.addEventListener('click', (e) => {
 // ====== Real Formspree contact form submission handler ======
 const form = document.getElementById('contactForm');
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault(); // prevent page reload
+form?.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
   const formData = new FormData(form);
 
