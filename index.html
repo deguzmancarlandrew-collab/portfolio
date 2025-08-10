@@ -9,28 +9,26 @@
 <body>
 
   <!-- Header / Navbar -->
-  <header class="navbar" role="banner">
+  <header class="navbar">
     <div class="brand">Carl's Portfolio</div>
-    <nav role="navigation" aria-label="Primary navigation">
+    <nav>
       <ul>
-        <li><a href="#" data-section="home" class="nav-link active" role="link" tabindex="0">Home</a></li>
-        <li><a href="#" data-section="about" class="nav-link" role="link" tabindex="0">About Me</a></li>
-        <li><a href="#" data-section="services" class="nav-link" role="link" tabindex="0">Services</a></li>
-        <li><a href="#" data-section="gallery" class="nav-link" role="link" tabindex="0">Gallery</a></li>
-        <li><a href="#" data-section="contact" class="nav-link" role="link" tabindex="0">Contact Me</a></li>
+        <li><a href="#" data-section="home" class="nav-link active">Home</a></li>
+        <li><a href="#" data-section="about" class="nav-link">About Me</a></li>
+        <li><a href="#" data-section="services" class="nav-link">Services</a></li>
+        <li><a href="#" data-section="gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#" data-section="contact" class="nav-link">Contact Me</a></li>
       </ul>
     </nav>
-    <button class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+    <button class="mobile-toggle" aria-label="toggle menu" aria-expanded="false">☰</button>
   </header>
 
-  <!-- SECTIONS (single page) -->
+  <!-- SECTIONS -->
   <main>
-
-    <!-- HOME -->
-    <section id="home" class="section active" role="region" aria-labelledby="homeHeading" tabindex="-1">
-      <div class="home-inner">
+    <section id="home" class="section active">
+      <div class="home-inner container">
         <img src="images/pogi.jpg" alt="Carl Profile" class="profile-pic" />
-        <h1 id="homeHeading">Hi, I'm <span class="accent">Carl</span></h1>
+        <h1>Hi, I'm <span class="accent">Carl</span></h1>
         <p class="lead">A passionate Web Developer building modern, responsive, and user-friendly websites.</p>
         <div class="cta">
           <button class="btn primary" id="hireBtn">Hire Me</button>
@@ -39,10 +37,9 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section" role="region" aria-labelledby="aboutHeading" tabindex="-1">
+    <section id="about" class="section">
       <div class="container">
-        <h2 id="aboutHeading">About Me</h2>
+        <h2>About Me</h2>
         <p class="sub">Quick facts about me</p>
         <ul class="about-list">
           <li><strong>Experience:</strong> 2 Years</li>
@@ -56,23 +53,21 @@
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="section" role="region" aria-labelledby="servicesHeading" tabindex="-1">
+    <section id="services" class="section">
       <div class="container">
-        <h2 id="servicesHeading">Services</h2>
+        <h2>Services</h2>
         <p class="sub">What I offer — click a card to learn more</p>
         <div class="services-grid">
-          <div class="card service-card" tabindex="0" data-modal="modal-webDesign" role="button" aria-describedby="desc-webDesign">Web Design</div>
-          <div class="card service-card" tabindex="0" data-modal="modal-webDev" role="button" aria-describedby="desc-webDev">Web Development</div>
-          <div class="card service-card" tabindex="0" data-modal="modal-videoEdit" role="button" aria-describedby="desc-videoEdit">Video Editing</div>
+          <div class="card service-card" data-modal="modal-webDesign">Web Design</div>
+          <div class="card service-card" data-modal="modal-webDev">Web Development</div>
+          <div class="card service-card" data-modal="modal-videoEdit">Video Editing</div>
         </div>
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="section" role="region" aria-labelledby="galleryHeading" tabindex="-1">
+    <section id="gallery" class="section">
       <div class="container">
-        <h2 id="galleryHeading">Gallery</h2>
+        <h2>Gallery</h2>
         <p class="sub">Selected works / screenshots</p>
         <div class="gallery-grid">
           <img src="gallery1.jpg" alt="Gallery 1" class="gallery-item" />
@@ -85,10 +80,9 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section" role="region" aria-labelledby="contactHeading" tabindex="-1">
+    <section id="contact" class="section">
       <div class="container">
-        <h2 id="contactHeading">Contact Me</h2>
+        <h2>Contact Me</h2>
         <p class="sub">Reach out — I'm happy to talk about your project</p>
 
         <div class="contact-cards">
@@ -98,27 +92,25 @@
         </div>
 
         <form id="contactForm" class="contact-form" action="https://formspree.io/f/xqalwqyb" method="POST">
-          <input name="name" type="text" placeholder="Your name" required aria-required="true" />
-          <input name="email" type="email" placeholder="Your email" required aria-required="true" />
-          <textarea name="message" placeholder="Your message" rows="5" required aria-required="true"></textarea>
+          <input name="name" type="text" placeholder="Your name" required />
+          <input name="email" type="email" placeholder="Your email" required />
+          <textarea name="message" placeholder="Your message" rows="5" required></textarea>
           <button type="submit" class="btn primary">Send Message</button>
         </form>
       </div>
     </section>
-
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer" role="contentinfo">
+  <footer class="footer">
     <p>© 2025 Carl Andrew De Guzman</p>
   </footer>
 
-  <!-- MODALS for services -->
-  <div id="modal-webDesign" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-webDesign-title" aria-describedby="desc-webDesign">
-    <div class="modal-dialog" tabindex="-1">
+  <!-- Modals -->
+  <div id="modal-webDesign" class="modal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog" tabindex="0">
       <button class="modal-close" data-close="modal-webDesign" aria-label="Close modal">&times;</button>
-      <h3 id="modal-webDesign-title">Web Design</h3>
-      <p id="desc-webDesign">I design modern, brand-focused website UIs with clear information hierarchy, mobile-first layouts, and visual polish.</p>
+      <h3>Web Design</h3>
+      <p>I design modern, brand-focused website UIs with clear information hierarchy, mobile-first layouts, and visual polish.</p>
       <ul>
         <li>UI mockups (Figma/Adobe XD)</li>
         <li>Responsive design</li>
@@ -127,11 +119,11 @@
     </div>
   </div>
 
-  <div id="modal-webDev" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-webDev-title" aria-describedby="desc-webDev">
-    <div class="modal-dialog" tabindex="-1">
+  <div id="modal-webDev" class="modal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog" tabindex="0">
       <button class="modal-close" data-close="modal-webDev" aria-label="Close modal">&times;</button>
-      <h3 id="modal-webDev-title">Web Development</h3>
-      <p id="desc-webDev">I build fast, accessible, and maintainable websites using HTML, CSS, JavaScript and frameworks when needed.</p>
+      <h3>Web Development</h3>
+      <p>I build fast, accessible, and maintainable websites using HTML, CSS, JavaScript and frameworks when needed.</p>
       <ul>
         <li>Responsive front-end</li>
         <li>Performance & SEO basics</li>
@@ -140,11 +132,11 @@
     </div>
   </div>
 
-  <div id="modal-videoEdit" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-videoEdit-title" aria-describedby="desc-videoEdit">
-    <div class="modal-dialog" tabindex="-1">
+  <div id="modal-videoEdit" class="modal" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog" tabindex="0">
       <button class="modal-close" data-close="modal-videoEdit" aria-label="Close modal">&times;</button>
-      <h3 id="modal-videoEdit-title">Video Editing</h3>
-      <p id="desc-videoEdit">Short-form and long-form video editing for social, promos, tutorials — color correction, cuts, and motion graphics.</p>
+      <h3>Video Editing</h3>
+      <p>Short-form and long-form video editing for social, promos, tutorials — color correction, cuts, and motion graphics.</p>
       <ul>
         <li>Social edits (IG/FB/TikTok)</li>
         <li>Promo and tutorial editing</li>
@@ -156,4 +148,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
