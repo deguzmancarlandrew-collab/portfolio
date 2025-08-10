@@ -1,6 +1,9 @@
 /* ---------------------------
    Basic reset & variables
    --------------------------- */
+html {
+  scroll-padding-top: 64px; /* navbar height */
+}
 :root{
   --bg:#f4f6f8;
   --dark:#111217;
